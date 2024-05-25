@@ -10,7 +10,9 @@ def get():
 
 
 class TicketListView:
-    pass
+    @classmethod
+    def as_view(cls, param):
+        pass
 
 
 def get(ticket_id):

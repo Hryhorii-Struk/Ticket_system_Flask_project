@@ -13,7 +13,7 @@ from flask_login import login_required
 from . import flicket_bp
 from application import app
 from application.ticket_system.forms.ticket_system_forms import CreateTicketForm
-from application.ticket_system.models.ticket_system_models_ext import FlicketTicketExt
+from application.ticket_system.models.ticket_system_models_ext import Ticket_System_TicketExt
 
 
 # create ticket
@@ -27,13 +27,13 @@ def ticket_create():
     form = CreateTicketForm(category=last_category)
 
     if form.validate_on_submit():
-        new_ticket = FlicketTicketExt.create_ticket(title=form.title.data,
-                                                    user=g.user,
-                                                    content=form.content.data,
-                                                    category=form.category.data,
-                                                    priority=form.priority.data,
-                                                    hours=form.hours.data,
-                                                    files=request.files.getlist("file"))
+        new_ticket = Ticket_System_TicketExt.create_ticket(title=form.title.data,
+                                                           user=g.user,
+                                                           content=form.content.data,
+                                                           category=form.category.data,
+                                                           priority=form.priority.data,
+                                                           hours=form.hours.data,
+                                                           files=request.files.getlist("file"))
 
         flash(gettext('New Ticket created.'), category='success')
 

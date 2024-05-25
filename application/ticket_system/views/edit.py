@@ -16,7 +16,7 @@ from application.ticket_system.models.ticket_system_models import FlicketStatus
 from application.ticket_system.models.ticket_system_models import FlicketPriority
 from application.ticket_system.models.ticket_system_models import FlicketTicket
 from application.ticket_system.models.ticket_system_models import FlicketUploads
-from application.ticket_system.models.ticket_system_models_ext import FlicketTicketExt
+from application.ticket_system.models.ticket_system_models_ext import Ticket_System_TicketExt
 from application.ticket_system.scripts.ticket_system_functions import add_action
 from application.ticket_system.scripts.ticket_system_functions import is_ticket_closed
 from application.ticket_system.scripts.ticket_systemupload import UploadAttachment
@@ -48,7 +48,7 @@ def edit_ticket(ticket_id):
         return redirect(url_for('flicket_bp.ticket_view', ticket_id=ticket_id))
 
     if form.validate_on_submit():
-        ticket_id = FlicketTicketExt.edit_ticket(
+        ticket_id = Ticket_System_TicketExt.edit_ticket(
             ticket=ticket,
             title=form.title.data,
             user=g.user,

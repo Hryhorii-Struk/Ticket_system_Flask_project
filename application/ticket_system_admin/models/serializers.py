@@ -42,3 +42,14 @@ if __name__ == '__main__':
     if serializer.is_valid():
         ticket = serializer.save()
         print(ticket)
+
+
+class TicketSerializer:
+    def __init__(self):
+        self.data = None
+
+    def is_valid(self):
+        pass
+
+    def save(self):
+        pass

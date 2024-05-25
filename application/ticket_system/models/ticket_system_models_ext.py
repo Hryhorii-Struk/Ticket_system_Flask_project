@@ -9,11 +9,14 @@ from application.ticket_system.models.ticket_system_models import FlicketTicket,
     FlicketSubscription, FlicketHistory, FlicketUploads
 
 
+
+
+
 class FlicketTicketExt:
     """
     A class to extend the functionality of FlicketTicket.
 
-    Methods aren't included in the FlicketTicket class itself
+    Methods aren't included in the Ticket_SystemTicket class itself
     due to potential circular import issues with ticket_systemupload.py
     """
 

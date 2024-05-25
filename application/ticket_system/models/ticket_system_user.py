@@ -5,13 +5,14 @@ from datetime import datetime, timedelta
 import os
 import random
 import string
+from lib2to3.pytree import Base
 
 import bcrypt
 from flask import url_for
 from flask_login import UserMixin
 
 from application import db, app
-from application.ticket_system.models import Base
+
 from application.ticket_system_api.scripts.paginated_api import PaginatedAPIMixin
 
 user_field_size = {
@@ -36,6 +37,7 @@ flicket_groups = db.Table('flicket_groups',
 
 
 class FlicketUser(PaginatedAPIMixin, UserMixin, Base):
+    query = None
     __tablename__ = 'flicket_users'
 
     id = db.Column(db.Integer, primary_key=True)
