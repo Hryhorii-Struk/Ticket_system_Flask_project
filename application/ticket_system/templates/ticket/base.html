@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ ticket.title }}</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }} {{ form.title(size=20) }}
+    </p>
+    <p>
+        {{ form.description.label }} {{ form.description(size=40) }}
+    </p>
+    <p>
+        {{ form.status.label }} {{ form.status() }}
+    </p>
+    <p>
+        {{ form.user_id.label }} {{ form.user_id() }}
+    </p>
+    <p>
+        {{ form.group_id.label }} {{ form.group_id() }}
+    </p>
+    <p>
+        {{ form.note.label }} {{ form.note(size=40) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
