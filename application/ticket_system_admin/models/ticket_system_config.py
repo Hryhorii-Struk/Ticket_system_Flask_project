@@ -1,7 +1,7 @@
-
+from lib2to3.pytree import Base
 
 from application import db
-from application.ticket_system.models import Base
+
 
 
 class FlicketConfig(Base):

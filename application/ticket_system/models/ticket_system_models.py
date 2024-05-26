@@ -1,10 +1,11 @@
 import datetime
+from lib2to3.pytree import Base
 
 from flask import url_for, g
 from sqlalchemy import select, join, func
 from app import db
 from application import app, db
-from application.ticket_system.models import Base
+
 from application.ticket_system.models.ticket_system_user import FlicketUser
 from application.ticket_system_api.scripts.paginated_api import PaginatedAPIMixin
 
