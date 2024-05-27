@@ -1,4 +1,7 @@
+import types
+
 from marshmallow import Schema, fields
+from sqlalchemy import null
 
 
 class TicketSerializer(Schema):

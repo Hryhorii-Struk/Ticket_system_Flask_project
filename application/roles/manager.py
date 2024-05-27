@@ -1,6 +1,8 @@
-from app import Ticket
+
 from flask import render_template, Blueprint, redirect, url_for
 from flask_login import login_required, current_user
+
+from application.ticket_system.forms.models import Ticket
 
 ticket_bp = Blueprint('ticket', __name__)
 

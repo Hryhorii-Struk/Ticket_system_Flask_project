@@ -1,7 +1,4 @@
 
-
-
-# used for debugging purposes only
 def print_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
