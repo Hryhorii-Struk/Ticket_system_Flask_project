@@ -9,9 +9,9 @@ from application.ticket_system.forms.ticket_system_forms import SearchUserForm
 from application.ticket_system.models.ticket_system_user import FlicketUser
 
 
-# view users
-@flicket_bp.route(app.config['FLICKET'] + 'users/', methods=['GET', 'POST'])
-@flicket_bp.route(app.config['FLICKET'] + 'users/<int:page>/', methods=['GET', 'POST'])
+# view urls.py
+@flicket_bp.route(app.config['FLICKET'] + 'urls.py/', methods=['GET', 'POST'])
+@flicket_bp.route(app.config['FLICKET'] + 'urls.py/<int:page>/', methods=['GET', 'POST'])
 @login_required
 def flicket_users(page=1):
     form = SearchUserForm()

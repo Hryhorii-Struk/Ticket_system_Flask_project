@@ -71,7 +71,7 @@ class PasswordSerializerResource(Resource):
 
 # Register the API resources
 api = Api(app)
-api.add_resource(UserModelResource, '/users/<int:user_id>')
+api.add_resource(UserModelResource, '/urls.py/<int:user_id>')
 api.add_resource(EmailSerializerResource, '/email')
 api.add_resource(PasswordSerializerResource, '/password')
 

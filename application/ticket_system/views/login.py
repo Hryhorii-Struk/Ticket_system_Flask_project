@@ -126,7 +126,7 @@ def logout():
     return redirect(url_for('flicket_bp.index'))
 
 
-# reset users password
+# reset urls.py password
 @flicket_bp.route(app.config['WEBHOME'] + 'password_reset', methods=['GET', 'POST'])
 def password_reset():
     form = PasswordResetForm()

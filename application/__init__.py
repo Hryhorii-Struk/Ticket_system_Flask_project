@@ -184,3 +184,5 @@ def ensure_lang_support():
 from application.commands import register_clicks
 
 register_clicks(app)
+
+

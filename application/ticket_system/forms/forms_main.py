@@ -83,7 +83,7 @@ def check_email(form, field):
 
 def change_email(form, field):
     """
-    Ensure the form email matches the users email.
+    Ensure the form email matches the urls.py email.
     :param form:
     :param field:
     :return:

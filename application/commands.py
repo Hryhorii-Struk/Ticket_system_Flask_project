@@ -43,7 +43,7 @@ depart_categories = [
 
 ]
 
-json_user_file = 'users.json'
+json_user_file = 'urls.py.json'
 
 
 class JsonUser:
@@ -282,7 +282,7 @@ def register_clicks(app):
         # commit changes to the database
         db.session.commit()
 
-    @app.cli.command('export-users-to-json', help='Export all users from database to json file.')
+    @app.cli.command('export-urls.py-to-json', help='Export all urls.py from database to json file.')
     def export_users_to_json():
 
         # query database.
@@ -313,7 +313,7 @@ def register_clicks(app):
         with open(json_user_file, 'w') as f:
             f.write(file_text)
 
-    @app.cli.command('import-users-from-json', help='Export all users from database to json file.')
+    @app.cli.command('import-urls.py-from-json', help='Export all urls.py from database to json file.')
     def import_users_from_json():
         # check if file exists
         if not os.path.isfile(json_user_file):
@@ -331,7 +331,7 @@ def register_clicks(app):
                 print('json file not formatted correctly. Exiting.')
                 exit()
 
-        # add users to database.
+        # add urls.py to database.
         for user in json_users:
 
             # encode password to bytes
@@ -353,7 +353,7 @@ def register_clicks(app):
             db.session.add(new_user)
             db.session.commit()
 
-    @app.cli.command('update-total-post-count', help='Update all users total post count. Use when upgrading from 1.4.')
+    @app.cli.command('update-total-post-count', help='Update all urls.py total post count. Use when upgrading from 1.4.')
     def update_total_post_count():
 
         print('!!! Warning !!!!')
@@ -376,7 +376,7 @@ def register_clicks(app):
             print('Updates were made.')
 
     @app.cli.command('update-total-user_assigned',
-                     help='Update all users total post count. Use when upgrading from 1.4.')
+                     help='Update all urls.py total post count. Use when upgrading from 1.4.')
     def update_total_user_assigned():
 
         print('!!! Warning !!!!')
@@ -400,9 +400,9 @@ def register_clicks(app):
             print('Updates were made.')
 
     @app.cli.command('email-outstanding-tickets',
-                     help='Update all users total post count. Use when upgrading from 1.4.')
+                     help='Update all urls.py total post count. Use when upgrading from 1.4.')
     def email_outstanding_tickets():
-        # find all users
+        # find all urls.py
         users = FlicketUser.query.all()
         for user in users:
             # that have created a ticket or have a ticket assigned to them.

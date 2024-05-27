@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 class AdminModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('urls.py.id'), nullable=False)
 
     profile = db.relationship('ProfileModel', backref='admin')
     user = db.relationship('UserModel', backref='admin')
@@ -47,7 +47,7 @@ class ManagerResource(Resource):
         if admin:
             return {
                 'id': admin.id,
-                'users': admin.user,
+                'urls.py': admin.user,
                 'profile': admin.profile
             }
         return {'message': 'Admin not found'}, 404

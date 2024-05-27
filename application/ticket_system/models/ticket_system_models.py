@@ -192,7 +192,7 @@ class FlicketTicket(PaginatedAPIMixin, Base):
     uploads = db.relationship('FlicketUploads',
                               primaryjoin="and_(FlicketTicket.id == FlicketUploads.topic_id)")
 
-    # finds all the users who are subscribed to the ticket.
+    # finds all the urls.py who are subscribed to the ticket.
     subscribers = db.relationship('FlicketSubscription', order_by='FlicketSubscription.user_def')
 
     # finds all the actions associated with the ticket
@@ -299,7 +299,7 @@ class FlicketTicket(PaginatedAPIMixin, Base):
 
     def get_subscriber_emails(self):
         """
-        Function to return a list of email addresses of subscribed users.
+        Function to return a list of email addresses of subscribed urls.py.
         :return:
         """
         emails = list()

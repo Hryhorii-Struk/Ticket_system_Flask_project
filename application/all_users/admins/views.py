@@ -77,10 +77,10 @@ class UnBanManagerView(Resource):
 
 # Register the API resources
 api = Api(app)
-api.add_resource(UserToManagerView, '/users/<int:pk>/user_to_manager')
-api.add_resource(ManagerToUserView, '/users/<int:pk>/manager_to_user')
-api.add_resource(BanManagerView, '/users/<int:pk>/ban_manager')
-api.add_resource(UnBanManagerView, '/users/<int:pk>/un_ban_manager')
+api.add_resource(UserToManagerView, '/urls.py/<int:pk>/user_to_manager')
+api.add_resource(ManagerToUserView, '/urls.py/<int:pk>/manager_to_user')
+api.add_resource(BanManagerView, '/urls.py/<int:pk>/ban_manager')
+api.add_resource(UnBanManagerView, '/urls.py/<int:pk>/un_ban_manager')
 
 # Run the Flask app
 if __name__ == '__main__':

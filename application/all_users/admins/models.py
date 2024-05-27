@@ -7,7 +7,7 @@ db = SQLAlchemy()
 class AdminModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('urls.py.id'), nullable=False)
 
     profile = db.relationship('ProfileModel', backref='admin')
     user = db.relationship('UserModel', backref='admin')

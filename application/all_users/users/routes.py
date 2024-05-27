@@ -1,82 +1,66 @@
-from flask import Blueprint, request, jsonify
-from werkzeug.security import generate_password_hash
+from flask import render_template, redirect, url_for, flash
 
+from flask_login import login_user, logout_user, login_required, current_user
+from application import db, app
 from application.all_users.users import User
-
-user_bp = Blueprint('user', __name__)
-
-
-@user_bp.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    if User.query.filter_by(username=username).first():
-        return jsonify({'message': 'User already exists'}), 400
-
-    new_user = User(username=username, password=generate_password_hash(password))
-    new_user.save()
-
-    return jsonify({'message': 'User registered successfully'}), 201
+from application.ticket_system.auth.forms import LoginForm
 
 
-@user_bp.route('/register_customer_1', methods=['POST'])
-def register_customer_1():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    if User.query.filter_by(username=username).first():
-        return jsonify({'message': 'User already exists'}), 400
-
-    new_user = User(username=username, password=generate_password_hash(password))
-    new_user.save()
-
-    return jsonify({'message': 'Customer 1 registered successfully'}), 201
+@app.route('/')
+@login_required
+def home():
+    return render_template('home.html')
 
 
-@user_bp.route('/register_customer_1', methods=['POST'])
-def register_customer_2():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    if User.query.filter_by(username=username).first():
-        return jsonify({'message': 'User already exists'}), 400
-
-    new_user = User(username=username, password=generate_password_hash(password))
-    new_user.save()
-
-    return jsonify({'message': 'Customer 1 registered successfully'}), 201
-
-
-@user_bp.route('/register_customer_1', methods=['POST'])
-def register_customer_3():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    if User.query.filter_by(username=username).first():
-        return jsonify({'message': 'User already exists'}), 400
-
-    new_user = User(username=username, password=generate_password_hash(password))
-    new_user.save()
-
-    return jsonify({'message': 'Customer 1 registered successfully'}), 201
-
-
-def forgot_password():
-    return None
-
-
-def reset_password():
-    return None
-
-
-def verify_email():
-    return None
-
-
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return None
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember.data)
+            return redirect(url_for('home'))
+        flash('Invalid email or password.', 'danger')
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+class RegistrationForm:
+    pass
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data
+        )
+        db.session.add(user)
+        db.session.commit()
+        flash('User registered successfully.', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
+
+
+@app.route('/analysts')
+@login_required
+def analysts():
+    return redirect(url_for('analysts.index'))
+
+
+@app.route('/users')
+@login_required
+def users():
+    return redirect(url_for('urls.py.index'))

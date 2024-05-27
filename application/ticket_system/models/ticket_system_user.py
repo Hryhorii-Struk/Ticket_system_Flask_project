@@ -144,7 +144,7 @@ class FlicketUser(PaginatedAPIMixin, UserMixin, Base):
     @staticmethod
     def generate_password():
         """
-        A pseudo randomly generated password used for registered users wanting to reset their password.
+        A pseudo randomly generated password used for registered urls.py wanting to reset their password.
 
         :return str():
         """
@@ -200,7 +200,7 @@ class FlicketUser(PaginatedAPIMixin, UserMixin, Base):
             'total_posts': self.total_posts,
             'links': {
                 'self': app.config['base_url'] + url_for('bp_api.get_user', id=self.id),
-                'users': app.config['base_url'] + url_for('bp_api.get_users')
+                'urls.py': app.config['base_url'] + url_for('bp_api.get_users')
             }
         }
 

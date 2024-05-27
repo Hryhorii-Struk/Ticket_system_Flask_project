@@ -23,14 +23,14 @@ class FlicketConfig(Base):
     :param bool mail_ascii_attachments:
     :param str application_title: Changes the default banner text from `Flicket`. Can typically be your company name.
     :param str posts_per_page: Maximum number of posts / topics displayed per page.
-    :param str allowed_extensions: A comma delimited list of file extensions users are allowed to upload. DO NOT include
+    :param str allowed_extensions: A comma delimited list of file extensions urls.py are allowed to upload. DO NOT include
       the . before the extension letter.
     :param str ticket_upload_folder: The folder used for file uploads.
     :param str base_url: The sites base url. This is used to resolve urls for emails and links. Broken links are
       probably a result of not setting this value.
     :param str csv_dump_limit: The maximum number of rows exported to csv.
     :param bool change_category: Enable/disable change category.
-    :param bool change_category_only_admin_or_super_user: Only admins or super users can change category.
+    :param bool change_category_only_admin_or_super_user: Only admins or super urls.py can change category.
 
     """
     __tablename__ = 'flicket_config'

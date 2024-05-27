@@ -72,9 +72,9 @@ def index():
     return render_template('admin.html', title='Admin')
 
 
-# shows all users
-@admin_bp.route(app.config['ADMINHOME'] + 'users/', methods=['GET', 'POST'])
-@admin_bp.route(app.config['ADMINHOME'] + 'users/<int:page>', methods=['GET', 'POST'])
+# shows all urls.py
+@admin_bp.route(app.config['ADMINHOME'] + 'urls.py/', methods=['GET', 'POST'])
+@admin_bp.route(app.config['ADMINHOME'] + 'urls.py/<int:page>', methods=['GET', 'POST'])
 @login_required
 @admin_permission.require(http_exception=403)
 def users(page=1):
@@ -100,7 +100,7 @@ def add_user():
                     locale=form.locale.data,
                     disabled=form.disabled.data)
         flash(gettext('You have successfully registered new user "{}".'.format(form.username.data)), category='success')
-        return redirect(url_for('admin_bp.users'))
+        return redirect(url_for('admin_bp.urls.py'))
     # noinspection PyUnresolvedReferences
     return render_template('admin_user.html', title='Add User', form=form)
 
@@ -187,7 +187,7 @@ def delete_user():
         flash(gettext('Deleted user {}s'.format(user_details.username)), category='success')
         db.session.delete(user_details)
         db.session.commit()
-        return redirect(url_for('admin_bp.users'))
+        return redirect(url_for('admin_bp.urls.py'))
     # populate form with logged in user details
     form.id.data = g.user.id
     # noinspection PyUnresolvedReferences

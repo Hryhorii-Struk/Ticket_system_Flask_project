@@ -37,7 +37,7 @@
                 "job_title": "admin",
                 "links": {
                     "self": "http://127.0.0.1:5000/flicket-api/user/1",
-                    "users": "http://127.0.0.1:5000/flicket-api/users/"
+                    "urls.py": "http://127.0.0.1:5000/flicket-api/users/"
                 },
                 "name": "admin",
                 "total_posts": 12505,
@@ -47,13 +47,13 @@
     Get Users
     ~~~~~~~~~
 
-    .. http:get:: /ticket_system-api/users/
+    .. http:get:: /ticket_system-api/urls.py/
 
         **Request**
 
         .. sourcecode:: http
 
-            GET /ticket_system-api/users/ HTTP/1.1
+            GET /ticket_system-api/urls.py/ HTTP/1.1
             HOST: localhost:5000
             Accept: application/json
             Authorization: Bearer <token>
@@ -88,7 +88,7 @@
                         "job_title": "admin",
                         "links": {
                             "self": "http://localhost:5000/flicket-api/user/1",
-                            "users": "http://localhost:5000/flicket-api/users/"
+                            "urls.py": "http://localhost:5000/flicket-api/users/"
                         },
                         "name": "admin",
                         "total_posts": 6381,
@@ -101,7 +101,7 @@
                         "job_title": "unknown",
                         "links": {
                             "self": "http://localhost:5000/flicket-api/user/2",
-                            "users": "http://localhost:5000/flicket-api/users/"
+                            "urls.py": "http://localhost:5000/flicket-api/users/"
                         },
                         "name": "notification",
                         "total_posts": 6445,
@@ -127,7 +127,7 @@ def get_user(id):
     return jsonify(FlicketUser.query.get_or_404(id).to_dict())
 
 
-@bp_api.route(api_url + 'users/', methods=['GET'])
+@bp_api.route(api_url + 'urls.py/', methods=['GET'])
 @token_auth.login_required
 def get_users():
     name = request.args.get('name')

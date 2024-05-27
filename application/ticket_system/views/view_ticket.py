@@ -102,7 +102,7 @@ def ticket_view(ticket_id, page=1):
             )
             db.session.add(subscribe)
 
-        # add count of 1 to users total posts.
+        # add count of 1 to urls.py total posts.
         g.user.total_posts += 1
 
         ticket.last_updated = datetime.datetime.now()

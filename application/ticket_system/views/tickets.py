@@ -26,7 +26,7 @@ def clean_csv_data(input_text):
 
 def tickets_view(page, is_my_view=False, subscribed=False):
     """
-        Function common to 'tickets' and 'my_tickets' expect where query is filtered for users own tickets.
+        Function common to 'tickets' and 'my_tickets' expect where query is filtered for urls.py own tickets.
     """
 
     form = SearchTicketForm()

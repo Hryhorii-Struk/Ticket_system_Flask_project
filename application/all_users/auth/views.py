@@ -67,7 +67,7 @@ api.add_resource(MeView, '/me')
 api.add_resource(ActivateUserView, '/activate/<string:token>')
 api.add_resource(RecoveryPasswordRequest, '/recovery_password')
 api.add_resource(RecoveryPasswordView, '/recovery_password/<string:token>')
-api.add_resource(UpdateUserProfileView, '/users/<int:user_id>')
+api.add_resource(UpdateUserProfileView, '/urls.py/<int:user_id>')
 
 if __name__ == '__main__':
     app.run()

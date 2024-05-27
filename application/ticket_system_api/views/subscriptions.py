@@ -54,7 +54,7 @@
 
         .. sourcecode:: http
 
-            GET /ticket_system-api/users/ HTTP/1.1
+            GET /ticket_system-api/urls.py/ HTTP/1.1
             HOST: localhost:5000
             Accept: application/json
             Authorization: Bearer <token>

@@ -26,12 +26,12 @@ class TestUrls(unittest.TestCase):
 
     def test_user_list_url(self):
         tester = app
-        response = tester.get('/users/')
+        response = tester.get('/urls.py/')
         self.assertEqual(response.status_code, 200)
 
     def test_user_detail_url(self):
         tester = app
-        response = tester.get('/users/1/')
+        response = tester.get('/urls.py/1/')
         self.assertEqual(response.status_code, 200)
 
 

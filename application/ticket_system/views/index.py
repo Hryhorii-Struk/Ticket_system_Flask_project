@@ -9,7 +9,7 @@ from application.ticket_system.scripts.pie_charts import create_pie_chart_dict
 from application.ticket_system.models.ticket_system_models import FlicketTicket
 
 
-# view users
+# view urls.py
 @flicket_bp.route(app.config['FLICKET'], methods=['GET', 'POST'])
 @login_required
 def index():

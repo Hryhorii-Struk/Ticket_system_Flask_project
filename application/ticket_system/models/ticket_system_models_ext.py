@@ -62,7 +62,7 @@ class FlicketTicketExt:
         subscribe = FlicketSubscription(user=user, ticket=new_ticket)
         db.session.add(subscribe)
 
-        # add count of 1 to users total posts.
+        # add count of 1 to urls.py total posts.
         user.total_posts += 1
 
         db.session.commit()
