@@ -64,3 +64,19 @@ def register_customer_3():
     new_user.save()
 
     return jsonify({'message': 'Customer 1 registered successfully'}), 201
+
+
+def forgot_password():
+    return None
+
+
+def reset_password():
+    return None
+
+
+def verify_email():
+    return None
+
+
+def login():
+    return None

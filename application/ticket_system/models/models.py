@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -11,6 +12,11 @@ class Ticket(db.Model):
     status = db.Column(db.String(20), nullable=False, default='open')
     assigned_to_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     assigned_to = db.relationship('User', backref=db.backref('tickets', lazy=True))
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Ticket {self.id}>'
 
 
 class Comment(db.Model):
@@ -19,7 +25,6 @@ class Comment(db.Model):
     ticket_id = db.Column(db.Integer, db.ForeignKey('ticket.id'))
     ticket = db.relationship('Ticket', backref=db.backref('comments', lazy=True))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', backref=db.backref('comments', lazy=True))
 
 
 class User(db.Model):
