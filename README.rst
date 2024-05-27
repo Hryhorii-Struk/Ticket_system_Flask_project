@@ -7,10 +7,6 @@ locales can be added by following the section `Adding Additional Languages`
 within this README.
 
 
-Documentation
--------------
-
-For documentation and screenshots please visit: https://flicket.readthedocs.io/en/latest/
 
 
 Upgrading From Earlier Versions
