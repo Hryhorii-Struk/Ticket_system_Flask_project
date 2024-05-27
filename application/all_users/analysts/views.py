@@ -53,3 +53,23 @@ def delete(id):
     db.session.commit()
     flash('Ticket deleted successfully.', 'success')
     return redirect(url_for('analysts.index'))
+
+
+def get_tickets():
+    return None
+
+
+def create_ticket():
+    return None
+
+
+def get_ticket(ticket_id):
+    return None
+
+
+def update_ticket(ticket_id):
+    return None
+
+
+def delete_ticket(ticket_id):
+    return None
