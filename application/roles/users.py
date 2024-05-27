@@ -8,9 +8,14 @@ class UserGroup:
 
 
 class User:
+    query = None
+
     def __init__(self, username, group):
         self.username = username
         self.group = group
+
+    def save(self):
+        pass
 
 
 # Create user groups
